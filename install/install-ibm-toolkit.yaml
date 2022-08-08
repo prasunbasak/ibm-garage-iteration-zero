@@ -55,7 +55,7 @@ spec:
         - -c
         - |
           set -ex
-          git clone -b master --depth=1 https://github.com/cloud-native-toolkit/ibm-garage-iteration-zero.git /source
+          git clone -b master --depth=1 https://github.com/prasunbasak/ibm-garage-iteration-zero.git /source
           cd /source
 
           # Customize Installation
@@ -76,7 +76,7 @@ spec:
           set +x
           export TF_VAR_login_token=$(oc whoami -t)
           STARTTIME=$(date +%s)
-          ./terraform/runTerraform.sh --ocp -a
+          ./terraform/runTerraform.sh --ibmcloud -a -d
           DURATION=$(($(date +%s) - $STARTTIME))
           echo -e "\033[0;92m Toolkit install took: $(($DURATION / 60))m$(($DURATION % 60))s \033[0m"
       restartPolicy: Never
